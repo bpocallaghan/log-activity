@@ -3,12 +3,12 @@
 if (!function_exists('log_activity')) {
     /**
      * Log Activity
-     * @param string $title
+     * @param string $name
      * @param string $description
      * @param null   $eloquent
      */
-    function log_activity($title = '', $description = '', $eloquent = null)
+    function log_activity($name = '', $description = '', $eloquent = null)
     {
-        event(new Bpocallaghan\Titan\Events\ActivityWasTriggered($title, $description, $eloquent));
+        event(new Bpocallaghan\LogActivity\Events\LogActivity($name, $description, $eloquent));
     }
 }

@@ -18,7 +18,7 @@ use Illuminate\Support\Str;
 
 $factory->define(\Bpocallaghan\LogActivity\Models\LogActivity::class, function (Faker $faker) {
     return [
-        'name'        => $faker->name,
-        'description' => $faker->paragraph,
+        'name'        => 'Example Activity',
+        'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
     ];
 });

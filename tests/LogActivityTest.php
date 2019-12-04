@@ -13,14 +13,17 @@ class LogActivityTest extends TestCase
     public function can_create_activity()
     {
         $activity = factory(LogActivity::class)->create([
-            'name' => 'Example Name',
+            'name' => 'Example Activity',
         ]);
-
-        //$this->artisan('migrate', ['--database' => 'testbench'])->run();
-        // migration
-        // events
-        // helper
         
-        $this->assertDatabaseHas('log_activities', ['name' => 'Example Name',]);
+        $this->assertDatabaseHas('log_activities', ['name' => 'Example Activity',]);
+    }
+
+    /** @test */
+    public function can_create_activity_from_helper()
+    {
+        log_activity('Activity', 'Lorem Ipsum');
+
+        $this->assertDatabaseHas('log_activities', ['name' => 'Activity',]);
     }
 }
