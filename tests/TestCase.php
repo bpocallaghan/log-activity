@@ -12,7 +12,8 @@ abstract class TestCase extends Orchestra
         parent::setUp();
 
         $this->withFactories(__DIR__ . '/../database/factories');
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+
+        $this->setUpDatabase();
     }
 
     /**
@@ -26,6 +27,18 @@ abstract class TestCase extends Orchestra
         return [
             LogActivityServiceProvider::class
         ];
+    }
+
+    protected function setUpDatabase()
+    {
+        $this->createActivityLogTable();
+    }
+
+    protected function createActivityLogTable()
+    {
+        include_once __DIR__.'/../database/migrations/create_log_activities_table.php';
+
+        (new \CreateLogActivitiesTable())->up();
     }
 
     /**
