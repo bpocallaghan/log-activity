@@ -1,0 +1,53 @@
+{
+    "name": "bpocallaghan/log-activity",
+    "description": "Log activities in your Laravel app",
+    "keywords": [
+        "laravel",
+        "log",
+        "logger",
+        "actions",
+        "activity",
+        "activities"
+    ],
+    "type": "package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ben-Piet O'Callaghan",
+            "email": "bpocallaghan@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^7.2",
+        "symfony/console": "^4.3",
+        "illuminate/support": "^6.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bpocallaghan\\LogActivity\\": "src"
+        },
+        "files": [
+            "src/Helpers/helper.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Bpocallaghan\\LogActivity\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Bpocallaghan\\LogActivity\\LogActivityServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    }
+}
+
