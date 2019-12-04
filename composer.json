@@ -17,6 +17,7 @@
             "email": "bpocallaghan@gmail.com"
         }
     ],
+    "minimum-stability": "dev",
     "require": {
         "php": "^7.2",
         "symfony/console": "^4.3",
