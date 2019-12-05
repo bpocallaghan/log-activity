@@ -12,10 +12,11 @@ class LogActivityServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if (! class_exists('CreateLogActivitiesTable')) {
+        if (!class_exists('CreateLogActivitiesTable')) {
             $timestamp = date('Y_m_d_His', time());
             $this->publishes([
-                __DIR__.'/../database/migrations/create_log_activities_table.php' => database_path("/migrations/{$timestamp}_create_log_activities_table.php"),
+                __DIR__ . '/../database/migrations/create_log_activities_table.php'       => database_path("/migrations/{$timestamp}_create_log_activities_table.php"),
+                __DIR__ . '/../database/migrations/create_log_model_activities_table.php' => database_path("/migrations/{$timestamp}_create_log_model_activities_table.php"),
             ], 'migrations');
         }
     }
