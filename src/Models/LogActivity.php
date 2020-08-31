@@ -2,8 +2,10 @@
 
 namespace Bpocallaghan\LogActivity\Models;
 
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class LogActivity extends Model
 {
@@ -22,11 +24,20 @@ class LogActivity extends Model
     }
 
     /**
+     * Fetch the user
+     * @return BelongsTo
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    /**
      * Get the latest activities on the site
      * @param int $limit
      * @return mixed
      */
-    static public function getLatest($limit = 200)
+    public static function getLatest($limit = 200)
     {
         return self::with('subject')->orderBy('created_at', 'DESC')->limit($limit)->get();
     }
@@ -36,7 +47,7 @@ class LogActivity extends Model
      * @param int $minutes
      * @return mixed
      */
-    static public function getLatestMinutes($minutes = 24 * 60)
+    public static function getLatestMinutes($minutes = 24 * 60)
     {
         $date = Carbon::now()->subMinutes($minutes);
 
