@@ -26,11 +26,6 @@ class SaveActivity
         }
         $subjectId = $event->eloquent ? $event->eloquent->id : null;
 
-        if ($event->eloquent && !strpos($subject, '\Models')) {
-            $subjectId = null;
-            $subject = 'App\User';
-        }
-
         // log adjustment
         LogActivity::create([
             'name'         => $name,
