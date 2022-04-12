@@ -3,12 +3,16 @@
 namespace Bpocallaghan\LogActivity\Models;
 
 use App\Models\User;
+use Bpocallaghan\LogActivity\Database\Factories\LogActivityFactory;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class LogActivity extends Model
 {
+    use HasFactory;
+
     protected $table = 'log_activities';
 
     protected $guarded = ['id'];
@@ -52,5 +56,15 @@ class LogActivity extends Model
         $date = Carbon::now()->subMinutes($minutes);
 
         return self::where('created_at', '>=', $date)->orderBy('created_at', 'DESC')->get();
+    }
+
+    /**
+     * Create a new factory instance for the model.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    protected static function newFactory()
+    {
+        return LogActivityFactory::new();
     }
 }

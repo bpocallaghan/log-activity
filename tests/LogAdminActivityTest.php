@@ -12,7 +12,7 @@ class LogAdminActivityTest extends TestCase
     /** @test */
     public function can_create_activity()
     {
-        $activity = factory(LogActivity::class)->create([
+        $activity = LogActivity::factory()->create([
             'name' => 'Example Activity',
         ]);
 
